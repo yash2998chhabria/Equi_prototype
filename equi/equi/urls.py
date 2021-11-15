@@ -17,11 +17,18 @@ from django.contrib import admin
 from django.urls import path,include               
 from rest_framework import routers                 
 from offdatatest import views                             
+from django.conf.urls import include, url
 
 router = routers.DefaultRouter()                   
 router.register(r'offdatatest', views.Offline_dataView, 'offlinedata')  
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))             
+
+
+
+    url(r'^api/wegotinternet/', include(('offdatatest.urls', 'offdataset'), namespace='offdataurls')),  
+    # path('api/', include(router.urls)),
+
+            
 ]

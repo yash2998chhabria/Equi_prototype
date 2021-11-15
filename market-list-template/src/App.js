@@ -15,7 +15,7 @@ const App = () => {
   if (!allItems) return null
 
   const uploadofflinedata = () => {
-    fetch('http://127.0.0.1:8000/api/offdatatest/', {
+    fetch('http://127.0.0.1:8000/api/wegotinternet/collect_offdata', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ const App = () => {
       }),
     })
       .then(async (res) => {
-        console.log(res.status)
+        console.log(res.status,res)
         await db.items.clear()
       })
       .catch((err) => console.log('error'))
